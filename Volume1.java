@@ -34,22 +34,23 @@ public class Volume1 extends Volume implements Comparable<Volume1>{
     public Volume1 subtract(Volume1 w){
         int gal,bar;
         gal = bar = 0;
-        //Subtract the barrels then convert to gallons
-        bar = 42*(this.barrels - w.getBarrels());
-        //Subtract gallons then add in bar
-        gal = this.gallons - w.getGallons()+bar;
+        //Subtract the barrels
+        bar = (this.barrels - w.getBarrels());
         if (bar < 0) bar = 0;
+        //Subtract gallons then add in bar
+        gal = this.gallons - w.getGallons()+(bar*42);
+        
         Volume1 x = new Volume1(0,gal);
         x.convert();
         return x;
     }
     public int toPints(){
-        return this.getBarrels()*42*8 + this.getGallons()*8;
+        return (this.getBarrels()*42*8) + (this.getGallons()*8);
     }
     public void convert(){
         while (this.gallons >= 42){
-            gallons = gallons - 42;
-            barrels++;
+            this.gallons = this.gallons - 42;
+            this.barrels++;
         }
     }
     public String toString(){

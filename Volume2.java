@@ -36,6 +36,9 @@ public class Volume2 extends Volume1{
         super.convert();
 
     }
+    public int toPints(){
+        return super.toPints()+this.pints;
+    }
     public String toString(){
         return super.toString() + " Pints:" + this.pints;
     }
